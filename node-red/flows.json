@@ -1,0 +1,3032 @@
+[
+    {
+        "id": "cac464ba.946338",
+        "type": "tab",
+        "label": "Registration",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "e61d7807.20aac8",
+        "type": "tab",
+        "label": "Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8a5089a.03c5078",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "43ae93e4.3fd91c",
+        "type": "ui_tab",
+        "name": "Meter History",
+        "icon": "fa-history",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "5721af64.a940a",
+        "type": "ui_group",
+        "name": "Group 1",
+        "tab": "43ae93e4.3fd91c",
+        "order": 1,
+        "disp": false,
+        "width": "20",
+        "collapse": false
+    },
+    {
+        "id": "2d59a220.05900e",
+        "type": "ui_tab",
+        "name": "Meter Data",
+        "icon": "fa-thermometer-quarter",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "d347e8e2.369048",
+        "type": "ui_group",
+        "name": "Start / Stop",
+        "tab": "2d59a220.05900e",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "4dd3faf7.5231c4",
+        "type": "ui_group",
+        "name": "Sensor Readings",
+        "tab": "2d59a220.05900e",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "7f8789b9.253048",
+        "type": "http request",
+        "z": "cac464ba.946338",
+        "name": "Enroll Admin HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://rest-api:3000/api/enrollAdmin",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "x": 540,
+        "y": 100,
+        "wires": [
+            [
+                "eeb423fe.c7207"
+            ]
+        ]
+    },
+    {
+        "id": "f20b8cdc.e002",
+        "type": "inject",
+        "z": "cac464ba.946338",
+        "name": "POST",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "5dd7185d.b222"
+            ]
+        ]
+    },
+    {
+        "id": "eeb423fe.c7207",
+        "type": "debug",
+        "z": "cac464ba.946338",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 770,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "132183c.1a40d7c",
+        "type": "http request",
+        "z": "cac464ba.946338",
+        "name": "Register User HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/registerUser",
+        "tls": "",
+        "x": 540,
+        "y": 200,
+        "wires": [
+            [
+                "1b18c390.d5f72c"
+            ]
+        ]
+    },
+    {
+        "id": "f38377bb.b0c6c8",
+        "type": "inject",
+        "z": "cac464ba.946338",
+        "name": "POST",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 200,
+        "wires": [
+            [
+                "57f3f30c.7b938c"
+            ]
+        ]
+    },
+    {
+        "id": "1b18c390.d5f72c",
+        "type": "debug",
+        "z": "cac464ba.946338",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 770,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "6c18a509.9ab23c",
+        "type": "http request",
+        "z": "cac464ba.946338",
+        "name": "Register Sensor HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/registerSensor",
+        "tls": "",
+        "x": 550,
+        "y": 280,
+        "wires": [
+            [
+                "ef80848f.68ea48"
+            ]
+        ]
+    },
+    {
+        "id": "fd2b0988.6b8da8",
+        "type": "inject",
+        "z": "cac464ba.946338",
+        "name": "POST",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "cbcaabe9.f36e48"
+            ]
+        ]
+    },
+    {
+        "id": "ef80848f.68ea48",
+        "type": "debug",
+        "z": "cac464ba.946338",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 770,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "5dd7185d.b222",
+        "type": "change",
+        "z": "cac464ba.946338",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"adminName\": \"admin\", \"password\":\"adminpw\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 100,
+        "wires": [
+            [
+                "7f8789b9.253048"
+            ]
+        ]
+    },
+    {
+        "id": "57f3f30c.7b938c",
+        "type": "change",
+        "z": "cac464ba.946338",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"adminName\": \"admin\", \"username\":\"user1\"}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 200,
+        "wires": [
+            [
+                "132183c.1a40d7c"
+            ]
+        ]
+    },
+    {
+        "id": "cbcaabe9.f36e48",
+        "type": "change",
+        "z": "cac464ba.946338",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel0\", \"smartcontract\":\"chaincode6\", \"args\":{\"sensorID\": \"sensor1\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 280,
+        "wires": [
+            [
+                "6c18a509.9ab23c"
+            ]
+        ]
+    },
+    {
+        "id": "33cbeb4f0e902af2",
+        "type": "http request",
+        "z": "cac464ba.946338",
+        "name": "Register Sensor HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/registerSensor",
+        "tls": "",
+        "x": 550,
+        "y": 480,
+        "wires": [
+            [
+                "e73464eba80a87eb"
+            ]
+        ]
+    },
+    {
+        "id": "6e1800aff19991ab",
+        "type": "inject",
+        "z": "cac464ba.946338",
+        "name": "POST",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 480,
+        "wires": [
+            [
+                "3610b434b41ac5af"
+            ]
+        ]
+    },
+    {
+        "id": "e73464eba80a87eb",
+        "type": "debug",
+        "z": "cac464ba.946338",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 770,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "3610b434b41ac5af",
+        "type": "change",
+        "z": "cac464ba.946338",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel0\", \"smartcontract\":\"chaincode6\", \"args\":{\"sensorID\": \"sensor19\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 480,
+        "wires": [
+            [
+                "33cbeb4f0e902af2"
+            ]
+        ]
+    },
+    {
+        "id": "d99a232c967c5151",
+        "type": "http request",
+        "z": "cac464ba.946338",
+        "name": "Register Sensor HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/registerSensor",
+        "tls": "",
+        "x": 550,
+        "y": 660,
+        "wires": [
+            [
+                "fc39ac55e5583e90"
+            ]
+        ]
+    },
+    {
+        "id": "6d89335199bfae92",
+        "type": "inject",
+        "z": "cac464ba.946338",
+        "name": "POST",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 660,
+        "wires": [
+            [
+                "04202dd202973e6b"
+            ]
+        ]
+    },
+    {
+        "id": "fc39ac55e5583e90",
+        "type": "debug",
+        "z": "cac464ba.946338",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 770,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "04202dd202973e6b",
+        "type": "change",
+        "z": "cac464ba.946338",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel0\", \"smartcontract\":\"chaincode6\", \"args\":{\"sensorID\": \"sensor20\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 660,
+        "wires": [
+            [
+                "d99a232c967c5151"
+            ]
+        ]
+    },
+    {
+        "id": "12e71a744ed49183",
+        "type": "http request",
+        "z": "cac464ba.946338",
+        "name": "Register Sensor HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/registerSensor",
+        "tls": "",
+        "x": 530,
+        "y": 860,
+        "wires": [
+            [
+                "552f39c43a2557ee"
+            ]
+        ]
+    },
+    {
+        "id": "f95e7bfd14528f84",
+        "type": "inject",
+        "z": "cac464ba.946338",
+        "name": "POST",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 860,
+        "wires": [
+            [
+                "bd31da3d26da56bf"
+            ]
+        ]
+    },
+    {
+        "id": "552f39c43a2557ee",
+        "type": "debug",
+        "z": "cac464ba.946338",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 770,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "bd31da3d26da56bf",
+        "type": "change",
+        "z": "cac464ba.946338",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel0\", \"smartcontract\":\"chaincode6\", \"args\":{\"sensorID\": \"sensor21\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 860,
+        "wires": [
+            [
+                "12e71a744ed49183"
+            ]
+        ]
+    },
+    {
+        "id": "0ea2807adda81e5e",
+        "type": "http request",
+        "z": "cac464ba.946338",
+        "name": "Register Sensor HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/registerSensor",
+        "tls": "",
+        "x": 530,
+        "y": 1040,
+        "wires": [
+            [
+                "d5eaa5468875f8e9"
+            ]
+        ]
+    },
+    {
+        "id": "bfbd801b3ecacff4",
+        "type": "inject",
+        "z": "cac464ba.946338",
+        "name": "POST",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 110,
+        "y": 1040,
+        "wires": [
+            [
+                "1638b54d8a8ca21f"
+            ]
+        ]
+    },
+    {
+        "id": "d5eaa5468875f8e9",
+        "type": "debug",
+        "z": "cac464ba.946338",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 770,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "1638b54d8a8ca21f",
+        "type": "change",
+        "z": "cac464ba.946338",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel0\", \"smartcontract\":\"chaincode6\", \"args\":{\"sensorID\": \"sensor22\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 1040,
+        "wires": [
+            [
+                "0ea2807adda81e5e"
+            ]
+        ]
+    },
+    {
+        "id": "633bae1e.008508",
+        "type": "inject",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "c58c5119.827ab"
+            ]
+        ]
+    },
+    {
+        "id": "c15ea1c5.969918",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Generate Meter Data",
+        "func": "const kwh = (Math.random() * 100).toFixed(2).toString();const latitude = (Math.random() * 90).toFixed(6).toString();const longitude = (Math.random() * 180).toFixed(6).toString();const voltage = (Math.floor(Math.random() * (240 - 100 + 1)) + 100).toFixed(4).toString();const powerFactor = ((Math.random() * (1.0 - 0.5)) + 0.5).toFixed(2).toString(); gps = { latitude: latitude, longitude: longitude }; const gpsAsString = JSON.stringify(gps);const generatedData = { kwh: kwh, gpsAsString, voltage: voltage, powerFactor: powerFactor};if( msg.payload === false ) {\n    return null;\n}\nmsg.payload =generatedData ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 160,
+        "wires": [
+            [
+                "5a6a66f1.d94"
+            ]
+        ]
+    },
+    {
+        "id": "dbc47c80.0aca78",
+        "type": "inject",
+        "z": "e61d7807.20aac8",
+        "name": "Instructions",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "Use this toggle switch to start / stop the generation of Meter readings to be written to the Hyperledger Fabric blockchain.",
+        "payloadType": "str",
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "2de29a96.96fa9e"
+            ]
+        ]
+    },
+    {
+        "id": "5a6a66f1.d94",
+        "type": "link out",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "fc9c2af3.67052"
+        ],
+        "x": 975,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "fc9c2af3.67052",
+        "type": "link in",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "links": [
+            "5a6a66f1.d94"
+        ],
+        "x": 95,
+        "y": 260,
+        "wires": [
+            [
+                "77b4a2f.a8e2e5c"
+            ]
+        ]
+    },
+    {
+        "id": "c58c5119.827ab",
+        "type": "ui_switch",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "label": "Generate Meter readings",
+        "tooltip": "",
+        "group": "d347e8e2.369048",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "b9d5af6d.c3728"
+            ]
+        ]
+    },
+    {
+        "id": "2de29a96.96fa9e",
+        "type": "ui_text",
+        "z": "e61d7807.20aac8",
+        "group": "d347e8e2.369048",
+        "order": 1,
+        "width": "8",
+        "height": "2",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 290,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "eb97c32a.39353",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "If you can't connect a Meter, get data from the random generator",
+        "info": "",
+        "x": 250,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "4bcd1e2e.86bc3",
+        "type": "inject",
+        "z": "e61d7807.20aac8",
+        "name": "MQTT",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "Preferability, connect a Meter and transmit MQTT data into this Node-RED flow.",
+        "payloadType": "str",
+        "x": 110,
+        "y": 120,
+        "wires": [
+            [
+                "97a6e001.617bb"
+            ]
+        ]
+    },
+    {
+        "id": "97a6e001.617bb",
+        "type": "ui_text",
+        "z": "e61d7807.20aac8",
+        "group": "d347e8e2.369048",
+        "order": 3,
+        "width": "8",
+        "height": "3",
+        "name": "",
+        "label": "",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "style": false,
+        "font": "",
+        "fontSize": "",
+        "color": "#000000",
+        "x": 290,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "77b4a2f.a8e2e5c",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "func": "var date = new Date();\nvar options = { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };\nvar time = date.toLocaleDateString('tr-TR', options);\n// Retrieve individual properties\nvar kwh = msg.payload.kwh;  // Kilowatt-hour\nvar gpsAsString = msg.payload.gps;  // GPS as string\nvar voltage = msg.payload.voltage;  // Voltage\nvar gps = String(gpsAsString);\nconst powerFactor = msg.payload.powerFactor;  // Power factor\n\nmsg.payload = {'username':'user22','channel':'channel0', 'smartcontract':'chaincode6', 'args': {'sensorID':'sensor18', 'kwh':kwh,'time':time, 'gps':gps, 'voltage':voltage, 'pf':powerFactor} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 260,
+        "wires": [
+            [
+                "c7870641.3974e"
+            ]
+        ]
+    },
+    {
+        "id": "b76fa7a7.50bf7",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c7870641.3974e",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Add Meter data HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "http://rest-api:3000/api/addData",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "x": 560,
+        "y": 260,
+        "wires": [
+            [
+                "b76fa7a7.50bf7",
+                "bbb8e6b6.242d38"
+            ]
+        ]
+    },
+    {
+        "id": "bbb8e6b6.242d38",
+        "type": "ui_toast",
+        "z": "e61d7807.20aac8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "Success",
+        "name": "Notification",
+        "x": 830,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "7c0ac50.df3b4bc",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Get History HTTP Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://rest-api:3000/api/getHistory",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 540,
+        "y": 440,
+        "wires": [
+            [
+                "59a77b16.08c6dc",
+                "ea26e03a.c05d"
+            ]
+        ]
+    },
+    {
+        "id": "59a77b16.08c6dc",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "6bcd4294.f37834",
+        "type": "ui_button",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "group": "5721af64.a940a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Get History",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 110,
+        "y": 440,
+        "wires": [
+            [
+                "a79d0286.cd9288"
+            ]
+        ]
+    },
+    {
+        "id": "e1a0aa3b.ffe1c8",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "Read history from the blockchain into a table",
+        "info": "",
+        "x": 210,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "51182072.afefb8",
+        "type": "ui_table",
+        "z": "e61d7807.20aac8",
+        "group": "5721af64.a940a",
+        "name": "meter 18",
+        "order": 2,
+        "width": "20",
+        "height": "14",
+        "columns": [
+            {
+                "field": "TxId",
+                "title": "Transaction ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "sensorID",
+                "title": "Sensor ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time",
+                "title": "Time",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "kwh",
+                "title": "Kwh",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "gps",
+                "title": "GPS",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "voltage",
+                "title": "Voltage",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "pf",
+                "title": "PF",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 940,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "ea26e03a.c05d",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Format Table",
+        "func": "if( msg.payload.length === 0 ) {\n    return;\n}\n\nvar TxChain = [];\nfor( i=0; i < msg.payload.length; i++ ) {\n    var TransactionRecord = { \"TxId\":msg.payload[i].TxId, \n                              \"sensorID\":msg.payload[i].Value.sensorID,\n                              \"kwh\":msg.payload[i].Value.kwh,\n                              \"time\":msg.payload[i].Value.time,\n                              \"voltage\":msg.payload[i].Value.voltage,\n                              \"gps\":msg.payload[i].Value.gps,\n                              \"pf\":msg.payload[i].Value.pf\n                            };\n    TxChain.push( TransactionRecord );    \n}\nmsg.payload = TxChain;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 440,
+        "wires": [
+            [
+                "51182072.afefb8"
+            ]
+        ]
+    },
+    {
+        "id": "a79d0286.cd9288",
+        "type": "change",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel0\", \"smartcontract\":\"chaincode6\", \"args\":{\"sensorID\": \"sensor18\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 440,
+        "wires": [
+            [
+                "7c0ac50.df3b4bc"
+            ]
+        ]
+    },
+    {
+        "id": "b9d5af6d.c3728",
+        "type": "delay",
+        "z": "e61d7807.20aac8",
+        "name": "Rate Limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "outputs": 1,
+        "x": 540,
+        "y": 160,
+        "wires": [
+            [
+                "c15ea1c5.969918"
+            ]
+        ]
+    },
+    {
+        "id": "af570cde2a142df5",
+        "type": "inject",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 600,
+        "wires": [
+            [
+                "dcd8b0eabb26553b"
+            ]
+        ]
+    },
+    {
+        "id": "13812b018101be9a",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Generate Meter Data",
+        "func": "const kwh = (Math.random() * 100).toFixed(2).toString();const latitude = (Math.random() * 90).toFixed(6).toString();const longitude = (Math.random() * 180).toFixed(6).toString();const voltage = (Math.floor(Math.random() * (240 - 100 + 1)) + 100).toFixed(4).toString();const powerFactor = ((Math.random() * (1.0 - 0.5)) + 0.5).toFixed(2).toString(); gps = { latitude: latitude, longitude: longitude }; const gpsAsString = JSON.stringify(gps);const generatedData = { kwh: kwh, gpsAsString, voltage: voltage, powerFactor: powerFactor};if( msg.payload === false ) {\n    return null;\n}\nmsg.payload =generatedData ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 600,
+        "wires": [
+            [
+                "169b245d48d3d268"
+            ]
+        ]
+    },
+    {
+        "id": "169b245d48d3d268",
+        "type": "link out",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "5f181b74e9dfb738"
+        ],
+        "x": 945,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "dcd8b0eabb26553b",
+        "type": "ui_switch",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "label": "Generate Meter readings",
+        "tooltip": "",
+        "group": "d347e8e2.369048",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 360,
+        "y": 600,
+        "wires": [
+            [
+                "60dcda0afc3a74b3"
+            ]
+        ]
+    },
+    {
+        "id": "60dcda0afc3a74b3",
+        "type": "delay",
+        "z": "e61d7807.20aac8",
+        "name": "Rate Limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "outputs": 1,
+        "x": 580,
+        "y": 600,
+        "wires": [
+            [
+                "13812b018101be9a"
+            ]
+        ]
+    },
+    {
+        "id": "5f181b74e9dfb738",
+        "type": "link in",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "links": [
+            "169b245d48d3d268"
+        ],
+        "x": 105,
+        "y": 720,
+        "wires": [
+            [
+                "8a1b46dde80f3209"
+            ]
+        ]
+    },
+    {
+        "id": "8a1b46dde80f3209",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "func": "var date = new Date();\nvar options = { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };\nvar time = date.toLocaleDateString('tr-TR', options);\n// Retrieve individual properties\nvar kwh = msg.payload.kwh;  // Kilowatt-hour\nvar gpsAsString = msg.payload.gps;  // GPS as string\nvar voltage = msg.payload.voltage;  // Voltage\nvar gps = String(gpsAsString);\nconst powerFactor = msg.payload.powerFactor;  // Power factor\n\nmsg.payload = {'username':'user22','channel':'channel0', 'smartcontract':'chaincode6', 'args': {'sensorID':'sensor19', 'kwh':kwh,'time':time, 'gps':gps, 'voltage':voltage, 'pf':powerFactor} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 680,
+        "wires": [
+            [
+                "e3c3da2826c2e2eb"
+            ]
+        ]
+    },
+    {
+        "id": "bcd6b0db3a85bf2d",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 830,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "e3c3da2826c2e2eb",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Add Meter data HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/addData",
+        "tls": "",
+        "x": 550,
+        "y": 680,
+        "wires": [
+            [
+                "bcd6b0db3a85bf2d",
+                "de2280d7ca40e23b"
+            ]
+        ]
+    },
+    {
+        "id": "de2280d7ca40e23b",
+        "type": "ui_toast",
+        "z": "e61d7807.20aac8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "Success",
+        "name": "Notification",
+        "x": 910,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "9bc12834c50d3d3d",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Get History HTTP Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://rest-api:3000/api/getHistory",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 520,
+        "y": 840,
+        "wires": [
+            [
+                "0d65ecd6aee104ad",
+                "7fb97c6f0dad8072"
+            ]
+        ]
+    },
+    {
+        "id": "0d65ecd6aee104ad",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 730,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "6d42e5992c49de61",
+        "type": "ui_button",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "group": "5721af64.a940a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Get History",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 90,
+        "y": 840,
+        "wires": [
+            [
+                "537a9e82da844e95"
+            ]
+        ]
+    },
+    {
+        "id": "1a0ec9637339ee27",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "Read history from the blockchain into a table",
+        "info": "",
+        "x": 190,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "ca2cfe58db5651ad",
+        "type": "ui_table",
+        "z": "e61d7807.20aac8",
+        "group": "5721af64.a940a",
+        "name": "Meter19",
+        "order": 2,
+        "width": "20",
+        "height": "14",
+        "columns": [
+            {
+                "field": "TxId",
+                "title": "Transaction ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "sensorID",
+                "title": "Sensor ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time",
+                "title": "Time",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "kwh",
+                "title": "Kwh",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "gps",
+                "title": "GPS",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "voltage",
+                "title": "Voltage",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "pf",
+                "title": "PF",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 920,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "7fb97c6f0dad8072",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Format Table",
+        "func": "if( msg.payload.length === 0 ) {\n    return;\n}\n\nvar TxChain = [];\nfor( i=0; i < msg.payload.length; i++ ) {\n    var TransactionRecord = { \"TxId\":msg.payload[i].TxId, \n                              \"sensorID\":msg.payload[i].Value.sensorID,\n                              \"kwh\":msg.payload[i].Value.kwh,\n                              \"time\":msg.payload[i].Value.time,\n                              \"voltage\":msg.payload[i].Value.voltage,\n                              \"gps\":msg.payload[i].Value.gps,\n                              \"pf\":msg.payload[i].Value.pf\n                            };\n    TxChain.push( TransactionRecord );    \n}\nmsg.payload = TxChain;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 820,
+        "wires": [
+            [
+                "ca2cfe58db5651ad"
+            ]
+        ]
+    },
+    {
+        "id": "537a9e82da844e95",
+        "type": "change",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel0\", \"smartcontract\":\"chaincode6\", \"args\":{\"sensorID\": \"sensor19\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 840,
+        "wires": [
+            [
+                "9bc12834c50d3d3d"
+            ]
+        ]
+    },
+    {
+        "id": "d95a1356bac335f6",
+        "type": "inject",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 960,
+        "wires": [
+            [
+                "d0a401985614e543"
+            ]
+        ]
+    },
+    {
+        "id": "17f9691973d7c4af",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Generate Meter Data",
+        "func": "const kwh = (Math.random() * 100).toFixed(2).toString();const latitude = (Math.random() * 90).toFixed(6).toString();const longitude = (Math.random() * 180).toFixed(6).toString();const voltage = (Math.floor(Math.random() * (240 - 100 + 1)) + 100).toFixed(4).toString();const powerFactor = ((Math.random() * (1.0 - 0.5)) + 0.5).toFixed(2).toString(); gps = { latitude: latitude, longitude: longitude }; const gpsAsString = JSON.stringify(gps);const generatedData = { kwh: kwh, gpsAsString, voltage: voltage, powerFactor: powerFactor};if( msg.payload === false ) {\n    return null;\n}\nmsg.payload =generatedData ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 780,
+        "y": 960,
+        "wires": [
+            [
+                "9dbc57af16e3a304"
+            ]
+        ]
+    },
+    {
+        "id": "9dbc57af16e3a304",
+        "type": "link out",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "ea6c4365daf668f4"
+        ],
+        "x": 945,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "d0a401985614e543",
+        "type": "ui_switch",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "label": "Generate Meter readings",
+        "tooltip": "",
+        "group": "d347e8e2.369048",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 360,
+        "y": 960,
+        "wires": [
+            [
+                "bac8728189e924e5"
+            ]
+        ]
+    },
+    {
+        "id": "bac8728189e924e5",
+        "type": "delay",
+        "z": "e61d7807.20aac8",
+        "name": "Rate Limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "outputs": 1,
+        "x": 580,
+        "y": 960,
+        "wires": [
+            [
+                "17f9691973d7c4af"
+            ]
+        ]
+    },
+    {
+        "id": "ea6c4365daf668f4",
+        "type": "link in",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "links": [
+            "9dbc57af16e3a304"
+        ],
+        "x": 105,
+        "y": 1040,
+        "wires": [
+            [
+                "ab4aa942c90769e0"
+            ]
+        ]
+    },
+    {
+        "id": "ab4aa942c90769e0",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "func": "var date = new Date();\nvar options = { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };\nvar time = date.toLocaleDateString('tr-TR', options);\n// Retrieve individual properties\nvar kwh = msg.payload.kwh;  // Kilowatt-hour\nvar gpsAsString = msg.payload.gps;  // GPS as string\nvar voltage = msg.payload.voltage;  // Voltage\nvar gps = String(gpsAsString);\nconst powerFactor = msg.payload.powerFactor;  // Power factor\n\nmsg.payload = {'username':'user22','channel':'channel2', 'smartcontract':'ccc', 'args': {'sensorID':'sensor20', 'kwh':kwh,'time':time, 'gps':gps, 'voltage':voltage, 'pf':powerFactor} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 300,
+        "y": 1040,
+        "wires": [
+            [
+                "70da9e0002877e5d"
+            ]
+        ]
+    },
+    {
+        "id": "48ef0f6727232564",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 830,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "70da9e0002877e5d",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Add Meter data HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/addData",
+        "tls": "",
+        "x": 550,
+        "y": 1040,
+        "wires": [
+            [
+                "48ef0f6727232564",
+                "5f2406f953313deb"
+            ]
+        ]
+    },
+    {
+        "id": "5f2406f953313deb",
+        "type": "ui_toast",
+        "z": "e61d7807.20aac8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "Success",
+        "name": "Notification",
+        "x": 910,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "cbe82c30020cf97f",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Get History HTTP Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://rest-api:3000/api/getHistory",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 520,
+        "y": 1200,
+        "wires": [
+            [
+                "222a2b1c98eb4008",
+                "356789a2ec585f4e"
+            ]
+        ]
+    },
+    {
+        "id": "222a2b1c98eb4008",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 730,
+        "y": 1220,
+        "wires": []
+    },
+    {
+        "id": "324f8135cede56a6",
+        "type": "ui_button",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "group": "5721af64.a940a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Get History",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 90,
+        "y": 1200,
+        "wires": [
+            [
+                "c74cea7e5b6208bd"
+            ]
+        ]
+    },
+    {
+        "id": "fc1d7e9ff61ee8bf",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "Read history from the blockchain into a table",
+        "info": "",
+        "x": 190,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "42e53613ef1e9e1f",
+        "type": "ui_table",
+        "z": "e61d7807.20aac8",
+        "group": "5721af64.a940a",
+        "name": "Meter20",
+        "order": 2,
+        "width": "20",
+        "height": "14",
+        "columns": [
+            {
+                "field": "TxId",
+                "title": "Transaction ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "sensorID",
+                "title": "Sensor ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time",
+                "title": "Time",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "kwh",
+                "title": "Kwh",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "gps",
+                "title": "GPS",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "voltage",
+                "title": "Voltage",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "pf",
+                "title": "PF",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 920,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "356789a2ec585f4e",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Format Table",
+        "func": "if( msg.payload.length === 0 ) {\n    return;\n}\n\nvar TxChain = [];\nfor( i=0; i < msg.payload.length; i++ ) {\n    var TransactionRecord = { \"TxId\":msg.payload[i].TxId, \n                              \"sensorID\":msg.payload[i].Value.sensorID,\n                              \"kwh\":msg.payload[i].Value.kwh,\n                              \"time\":msg.payload[i].Value.time,\n                              \"voltage\":msg.payload[i].Value.voltage,\n                              \"gps\":msg.payload[i].Value.gps,\n                              \"pf\":msg.payload[i].Value.pf\n                            };\n    TxChain.push( TransactionRecord );    \n}\nmsg.payload = TxChain;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 750,
+        "y": 1180,
+        "wires": [
+            [
+                "42e53613ef1e9e1f"
+            ]
+        ]
+    },
+    {
+        "id": "c74cea7e5b6208bd",
+        "type": "change",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel2\", \"smartcontract\":\"ccc\", \"args\":{\"sensorID\": \"sensor20\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 280,
+        "y": 1200,
+        "wires": [
+            [
+                "cbe82c30020cf97f"
+            ]
+        ]
+    },
+    {
+        "id": "a5694556846876e8",
+        "type": "inject",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1370,
+        "y": 160,
+        "wires": [
+            [
+                "65f36d374fbc4894"
+            ]
+        ]
+    },
+    {
+        "id": "ed1b51cf2941cdfc",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Generate Meter Data",
+        "func": "const kwh = (Math.random() * 100).toFixed(2).toString();const latitude = (Math.random() * 90).toFixed(6).toString();const longitude = (Math.random() * 180).toFixed(6).toString();const voltage = (Math.floor(Math.random() * (240 - 100 + 1)) + 100).toFixed(4).toString();const powerFactor = ((Math.random() * (1.0 - 0.5)) + 0.5).toFixed(2).toString(); gps = { latitude: latitude, longitude: longitude }; const gpsAsString = JSON.stringify(gps);const generatedData = { kwh: kwh, gpsAsString, voltage: voltage, powerFactor: powerFactor};if( msg.payload === false ) {\n    return null;\n}\nmsg.payload =generatedData ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2040,
+        "y": 160,
+        "wires": [
+            [
+                "bc82c333085cdbcb"
+            ]
+        ]
+    },
+    {
+        "id": "bc82c333085cdbcb",
+        "type": "link out",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "f8fd052b1a56f5b2"
+        ],
+        "x": 2205,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "65f36d374fbc4894",
+        "type": "ui_switch",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "label": "Generate Meter readings",
+        "tooltip": "",
+        "group": "d347e8e2.369048",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 1620,
+        "y": 160,
+        "wires": [
+            [
+                "9c9bd4ea0aa7fcdc"
+            ]
+        ]
+    },
+    {
+        "id": "9c9bd4ea0aa7fcdc",
+        "type": "delay",
+        "z": "e61d7807.20aac8",
+        "name": "Rate Limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "outputs": 1,
+        "x": 1840,
+        "y": 160,
+        "wires": [
+            [
+                "ed1b51cf2941cdfc"
+            ]
+        ]
+    },
+    {
+        "id": "f8fd052b1a56f5b2",
+        "type": "link in",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "links": [
+            "bc82c333085cdbcb"
+        ],
+        "x": 1365,
+        "y": 240,
+        "wires": [
+            [
+                "c17d58562978ce79"
+            ]
+        ]
+    },
+    {
+        "id": "c17d58562978ce79",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "func": "var date = new Date();\nvar options = { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };\nvar time = date.toLocaleDateString('tr-TR', options);\n// Retrieve individual properties\nvar kwh = msg.payload.kwh;  // Kilowatt-hour\nvar gpsAsString = msg.payload.gps;  // GPS as string\nvar voltage = msg.payload.voltage;  // Voltage\nvar gps = String(gpsAsString);\nconst powerFactor = msg.payload.powerFactor;  // Power factor\n\nmsg.payload = {'username':'user22','channel':'channel2', 'smartcontract':'ccc', 'args': {'sensorID':'sensor21', 'kwh':kwh,'time':time, 'gps':gps, 'voltage':voltage, 'pf':powerFactor} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1560,
+        "y": 240,
+        "wires": [
+            [
+                "442565f2e9d3095b"
+            ]
+        ]
+    },
+    {
+        "id": "50f2d59f4409076a",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 2090,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "442565f2e9d3095b",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Add Meter data HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/addData",
+        "tls": "",
+        "x": 1810,
+        "y": 240,
+        "wires": [
+            [
+                "50f2d59f4409076a",
+                "e6b1518d382b6b18"
+            ]
+        ]
+    },
+    {
+        "id": "e6b1518d382b6b18",
+        "type": "ui_toast",
+        "z": "e61d7807.20aac8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "Success",
+        "name": "Notification",
+        "x": 2170,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "d910c7b918fe5250",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Get History HTTP Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://rest-api:3000/api/getHistory",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 1780,
+        "y": 400,
+        "wires": [
+            [
+                "9f46c55ab53ae158",
+                "a9c942d3763a1b87"
+            ]
+        ]
+    },
+    {
+        "id": "9f46c55ab53ae158",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 1990,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "6fe12508deb3db03",
+        "type": "ui_button",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "group": "5721af64.a940a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Get History",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 1350,
+        "y": 400,
+        "wires": [
+            [
+                "d1ab900ba7fe320b"
+            ]
+        ]
+    },
+    {
+        "id": "f041da58cc9733d0",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "Read history from the blockchain into a table",
+        "info": "",
+        "x": 1450,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "fdc278144602b3cd",
+        "type": "ui_table",
+        "z": "e61d7807.20aac8",
+        "group": "5721af64.a940a",
+        "name": "Meter21",
+        "order": 2,
+        "width": "20",
+        "height": "14",
+        "columns": [
+            {
+                "field": "TxId",
+                "title": "Transaction ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "sensorID",
+                "title": "Sensor ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time",
+                "title": "Time",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "kwh",
+                "title": "Kwh",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "gps",
+                "title": "GPS",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "voltage",
+                "title": "Voltage",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "pf",
+                "title": "PF",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 2180,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a9c942d3763a1b87",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Format Table",
+        "func": "if( msg.payload.length === 0 ) {\n    return;\n}\n\nvar TxChain = [];\nfor( i=0; i < msg.payload.length; i++ ) {\n    var TransactionRecord = { \"TxId\":msg.payload[i].TxId, \n                              \"sensorID\":msg.payload[i].Value.sensorID,\n                              \"kwh\":msg.payload[i].Value.kwh,\n                              \"time\":msg.payload[i].Value.time,\n                              \"voltage\":msg.payload[i].Value.voltage,\n                              \"gps\":msg.payload[i].Value.gps,\n                              \"pf\":msg.payload[i].Value.pf\n                            };\n    TxChain.push( TransactionRecord );    \n}\nmsg.payload = TxChain;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2010,
+        "y": 380,
+        "wires": [
+            [
+                "fdc278144602b3cd"
+            ]
+        ]
+    },
+    {
+        "id": "d1ab900ba7fe320b",
+        "type": "change",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel2\", \"smartcontract\":\"ccc\", \"args\":{\"sensorID\": \"sensor21\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1540,
+        "y": 400,
+        "wires": [
+            [
+                "d910c7b918fe5250"
+            ]
+        ]
+    },
+    {
+        "id": "bf4e5b9deb4be5be",
+        "type": "inject",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 1390,
+        "y": 580,
+        "wires": [
+            [
+                "2576dd0d5fb88ef3"
+            ]
+        ]
+    },
+    {
+        "id": "af802a3e7a2bb840",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Generate Meter Data",
+        "func": "const kwh = (Math.random() * 100).toFixed(2).toString();const latitude = (Math.random() * 90).toFixed(6).toString();const longitude = (Math.random() * 180).toFixed(6).toString();const voltage = (Math.floor(Math.random() * (240 - 100 + 1)) + 100).toFixed(4).toString();const powerFactor = ((Math.random() * (1.0 - 0.5)) + 0.5).toFixed(2).toString(); gps = { latitude: latitude, longitude: longitude }; const gpsAsString = JSON.stringify(gps);const generatedData = { kwh: kwh, gpsAsString, voltage: voltage, powerFactor: powerFactor};if( msg.payload === false ) {\n    return null;\n}\nmsg.payload =generatedData ;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2060,
+        "y": 580,
+        "wires": [
+            [
+                "a74fb5455ee205dd"
+            ]
+        ]
+    },
+    {
+        "id": "a74fb5455ee205dd",
+        "type": "link out",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "mode": "link",
+        "links": [
+            "aa3545ba3dd52ced"
+        ],
+        "x": 2225,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "2576dd0d5fb88ef3",
+        "type": "ui_switch",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "label": "Generate Meter readings",
+        "tooltip": "",
+        "group": "d347e8e2.369048",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "",
+        "topicType": "str",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": true,
+        "className": "",
+        "x": 1640,
+        "y": 580,
+        "wires": [
+            [
+                "1fef970b7462ea15"
+            ]
+        ]
+    },
+    {
+        "id": "1fef970b7462ea15",
+        "type": "delay",
+        "z": "e61d7807.20aac8",
+        "name": "Rate Limit",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "5",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "outputs": 1,
+        "x": 1860,
+        "y": 580,
+        "wires": [
+            [
+                "af802a3e7a2bb840"
+            ]
+        ]
+    },
+    {
+        "id": "aa3545ba3dd52ced",
+        "type": "link in",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "links": [
+            "a74fb5455ee205dd"
+        ],
+        "x": 1385,
+        "y": 660,
+        "wires": [
+            [
+                "cce185315f4c3f35"
+            ]
+        ]
+    },
+    {
+        "id": "cce185315f4c3f35",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "func": "var date = new Date();\nvar options = { timeZone: 'Europe/Istanbul', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit' };\nvar time = date.toLocaleDateString('tr-TR', options);\n// Retrieve individual properties\nvar kwh = msg.payload.kwh;  // Kilowatt-hour\nvar gpsAsString = msg.payload.gps;  // GPS as string\nvar voltage = msg.payload.voltage;  // Voltage\nvar gps = String(gpsAsString);\nconst powerFactor = msg.payload.powerFactor;  // Power factor\n\nmsg.payload = {'username':'user22','channel':'channel2', 'smartcontract':'ccc', 'args': {'sensorID':'sensor22', 'kwh':kwh,'time':time, 'gps':gps, 'voltage':voltage, 'pf':powerFactor} };\nmsg.headers = {'content-type':'application/json'};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1580,
+        "y": 660,
+        "wires": [
+            [
+                "75b6684c37f5882f"
+            ]
+        ]
+    },
+    {
+        "id": "d0c20aedaa6b63ee",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 2110,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "75b6684c37f5882f",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Add Meter data HTTP Request",
+        "method": "POST",
+        "ret": "txt",
+        "url": "http://rest-api:3000/api/addData",
+        "tls": "",
+        "x": 1830,
+        "y": 660,
+        "wires": [
+            [
+                "d0c20aedaa6b63ee",
+                "e678b5805ae4825c"
+            ]
+        ]
+    },
+    {
+        "id": "e678b5805ae4825c",
+        "type": "ui_toast",
+        "z": "e61d7807.20aac8",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "topic": "Success",
+        "name": "Notification",
+        "x": 2190,
+        "y": 720,
+        "wires": []
+    },
+    {
+        "id": "010e80a274d24060",
+        "type": "http request",
+        "z": "e61d7807.20aac8",
+        "name": "Get History HTTP Request",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "http://rest-api:3000/api/getHistory",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 1800,
+        "y": 820,
+        "wires": [
+            [
+                "79949a8196dfa1c9",
+                "c1caa370c76d54f0"
+            ]
+        ]
+    },
+    {
+        "id": "79949a8196dfa1c9",
+        "type": "debug",
+        "z": "e61d7807.20aac8",
+        "name": "Result",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 2010,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "efe9d1659685e34c",
+        "type": "ui_button",
+        "z": "e61d7807.20aac8",
+        "name": "",
+        "group": "5721af64.a940a",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Get History",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "topicType": "str",
+        "x": 1370,
+        "y": 820,
+        "wires": [
+            [
+                "100825cab1663cab"
+            ]
+        ]
+    },
+    {
+        "id": "21aa2df2bff77568",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "Read history from the blockchain into a table",
+        "info": "",
+        "x": 1470,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "e107b0a55c3f7e21",
+        "type": "ui_table",
+        "z": "e61d7807.20aac8",
+        "group": "5721af64.a940a",
+        "name": "Meter22",
+        "order": 2,
+        "width": "20",
+        "height": "14",
+        "columns": [
+            {
+                "field": "TxId",
+                "title": "Transaction ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "sensorID",
+                "title": "Sensor ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "time",
+                "title": "Time",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "kwh",
+                "title": "Kwh",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "gps",
+                "title": "GPS",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "voltage",
+                "title": "Voltage",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "pf",
+                "title": "PF",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 2200,
+        "y": 800,
+        "wires": []
+    },
+    {
+        "id": "c1caa370c76d54f0",
+        "type": "function",
+        "z": "e61d7807.20aac8",
+        "name": "Format Table",
+        "func": "if( msg.payload.length === 0 ) {\n    return;\n}\n\nvar TxChain = [];\nfor( i=0; i < msg.payload.length; i++ ) {\n    var TransactionRecord = { \"TxId\":msg.payload[i].TxId, \n                              \"sensorID\":msg.payload[i].Value.sensorID,\n                              \"kwh\":msg.payload[i].Value.kwh,\n                              \"time\":msg.payload[i].Value.time,\n                              \"voltage\":msg.payload[i].Value.voltage,\n                              \"gps\":msg.payload[i].Value.gps,\n                              \"pf\":msg.payload[i].Value.pf\n                            };\n    TxChain.push( TransactionRecord );    \n}\nmsg.payload = TxChain;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 2030,
+        "y": 800,
+        "wires": [
+            [
+                "e107b0a55c3f7e21"
+            ]
+        ]
+    },
+    {
+        "id": "100825cab1663cab",
+        "type": "change",
+        "z": "e61d7807.20aac8",
+        "name": "Body / Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"username\": \"user22\", \"channel\":\"channel2\", \"smartcontract\":\"ccc\", \"args\":{\"sensorID\": \"sensor22\"} }",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{\"content-type\":\"application/json\"}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1560,
+        "y": 820,
+        "wires": [
+            [
+                "010e80a274d24060"
+            ]
+        ]
+    },
+    {
+        "id": "f94a40801865fbe1",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "sensor18",
+        "info": "",
+        "x": 420,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "bc17e1b7c9732e64",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "sensor19",
+        "info": "",
+        "x": 412.5078125,
+        "y": 550.5234375,
+        "wires": []
+    },
+    {
+        "id": "261f641b0ebdd7dd",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "sensor20",
+        "info": "",
+        "x": 400,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "0434187e0c76555d",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "sensor21",
+        "info": "",
+        "x": 1740,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "89163af8181fe265",
+        "type": "comment",
+        "z": "e61d7807.20aac8",
+        "name": "sensor22",
+        "info": "",
+        "x": 1740,
+        "y": 540,
+        "wires": []
+    }
+]
