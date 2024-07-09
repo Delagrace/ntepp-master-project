@@ -1,0 +1,57 @@
+export CHANNEL_NAME=channel0 ORDERER_URL=blockchain-orderer:31010 CORE_PEER_LOCALMSPID=Org1MSP CORE_PEER_MSPCONFIGPATH=/shared/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/ FABRIC_CFG_PATH=/etc/hyperledger/fabric
+shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+org1peer1
+export CHAINCODE_VERSION=1.0 CHAINCODE_NAME=chaincode0 CHANNEL_NAME=channel0 ORDERER_URL=blockchain-orderer:31010 CORE_PEER_LOCALMSPID=Org1MSP CORE_PEER_MSPCONFIGPATH=/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp CORE_PEER_ADDRESS=blockchain-org1peer1:30110 CORE_PEER_TLS_ROOTCERT_FILE=/shared/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt FABRIC_CFG_PATH=/etc/hyperledger/fabric
+peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/channel0.tx --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+peer channel join -b /shared/channel0_newest.block
+##chaincode install
+cp -r /shared/artifacts/chaincode $GOPATH/src/
+peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE} -p chaincode/chaincode
+##chaincode instantiate
+peer chaincode instantiate -o blockchain-orderer:31010 --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C ${CHANNEL_NAME} -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -c '{"Args":["Init"]}' -P "OR('Org1MSP.member')"
+peer chaincode invoke -o blockchain-orderer4:31040 --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C channel0 -n chaincode0 -c '{"Args":["registerSensor","sensora"]}'
+
+org1peer2
+export CHANNEL_NAME=channel0 ORDERER_URL=blockchain-orderer4:31040 CORE_PEER_LOCALMSPID=Org1MSP CORE_PEER_MSPCONFIGPATH=/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp CORE_PEER_ADDRESS=blockchain-org1peer2:30310 CORE_PEER_TLS_ROOTCERT_FILE=/shared/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt FABRIC_CFG_PATH=/etc/hyperledger/fabric
+####peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/channel0.tx --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel join -b ${CHANNEL_NAME}_newest.block
+
+org2peer1
+export CHAINCODE_VERSION=1.0 CHAINCODE_NAME=chaincode0 CHANNEL_NAME=channel0 ORDERER_URL=blockchain-orderer4:31040 CORE_PEER_LOCALMSPID=Org2MSP CORE_PEER_MSPCONFIGPATH=/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp CORE_PEER_ADDRESS=blockchain-org2peer1:30210 CORE_PEER_TLS_ROOTCERT_FILE=/shared/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt FABRIC_CFG_PATH=/etc/hyperledger/fabric
+peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/channel0.tx --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel join -b ${CHANNEL_NAME}_newest.block
+cp -r /shared/artifacts/chaincode $GOPATH/src/
+peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} --tlsRootCertFiles ${CORE_PEER_TLS_ROOTCERT_FILE} -p chaincode/chaincode
+peer chaincode instantiate -o blockchain-orderer:31040 --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer1.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C ${CHANNEL_NAME} -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -c '{"Args":["Init"]}' -P "OR('Org1MSP.member')"
+
+org2peer2
+export  CHAINCODE_VERSION=1.0 CHAINCODE_NAME=chaincode0 CHANNEL_NAME=channel0 ORDERER_URL=blockchain-orderer4:31040 CORE_PEER_LOCALMSPID=Org2MSP CORE_PEER_MSPCONFIGPATH=/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp CORE_PEER_ADDRESS=blockchain-org2peer2:30410 CORE_PEER_TLS_ROOTCERT_FILE=/shared/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt FABRIC_CFG_PATH=/etc/hyperledger/fabric
+peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/channel0.tx --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel join -b ${CHANNEL_NAME}_newest.block
+
+
+
+
+
+export CHANNEL_NAME=channel0 ORDERER_URL=blockchain-orderer4:31040 CORE_PEER_LOCALMSPID=Org2MSP CORE_PEER_MSPCONFIGPATH=/shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp CORE_PEER_ADDRESS=blockchain-org2peer2:30410 CORE_PEER_TLS_ROOTCERT_FILE=/shared/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt FABRIC_CFG_PATH=/etc/hyperledger/fabric
+peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/channel0.tx --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel join -b /shared/channel0.block
+
+export CHAINCODE_NAME=chaincode0 CHAINCODE_VERSION=1.0 CHANNEL_NAME=channel0 ORDERER_URL=blockchain-orderer4:31040 CORE_PEER_LOCALMSPID=Org1MSP CORE_PEER_MSPCONFIGPATH=/shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp CORE_PEER_ADDRESS=blockchain-org1peer1:30110 CORE_PEER_TLS_ROOTCERT_FILE=/shared/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt FABRIC_CFG_PATH=/etc/hyperledger/fabric
+peer channel create -o ${ORDERER_URL} -c ${CHANNEL_NAME} -f /shared/channel0.tx --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+peer channel join -b /shared/channel0.block
+peer chaincode install -n ${CHAINCODE_NAME} -v ${CHAINCODE_VERSION} -p chaincode/
+
+
+"username: user4, channel: channel0, smartcontract: chaincode0, args: {sensorID: sensor1}"
+
+
+tlsCaCerts: /shared/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/msp/tlscacerts/tlsca.org1.example.com-cert.pem
+tlsCaCerts: /shared/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/msp/tlscacerts/tlsca.org2.example.com-cert.pem
+tlsCaCerts: /shared/crypto-config/ordererOrganizations/example.com/tlsca/tlsca.example.com-cert.pem

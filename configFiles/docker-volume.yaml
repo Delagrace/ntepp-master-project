@@ -1,0 +1,33 @@
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: docker-pv
+  labels:
+    type: local
+    name: dockervolume
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/tmp-docker-pv"
+
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: docker-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi
+  storageClassName: "standard"
+  selector:
+    matchLabels:
+      name: dockervolume
+
+      #peer chaincode instantiate -o blockchain-orderer:31010 -C channel0 -n chaincode6 -v 3.0 -c '{"Args":["init","SensorID","0", "Temp", "0", "Time", "0", "GPS", "0", "Voltage", "0", "PF", "0"]}'"

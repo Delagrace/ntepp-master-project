@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker-dind
+spec:
+  containers:
+  - name: dind
+    image: "docker:dind"
+    securityContext:
+      privileged: true
+    ports:
+    - containerPort: 2375
+      hostPort: 2375

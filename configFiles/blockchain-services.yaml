@@ -1,0 +1,337 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-ca
+  labels:
+    run: blockchain-ca
+spec:
+  type: NodePort
+  selector:
+    name: ca
+  ports:
+  - protocol: TCP
+    #nodePort: 7054
+    targetPort: 7054
+    port: 7054
+    name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-ca2
+  labels:
+    run: blockchain-ca2
+spec:
+  type: NodePort
+  selector:
+    name: ca2
+  ports:
+  - protocol: TCP
+    #nodePort: 7055
+    targetPort: 7055
+    port: 7055
+    name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-orderer
+  labels:
+    run: blockchain-orderer
+spec:
+  type: NodePort
+  selector:
+    name: orderer
+  ports:
+  - protocol: TCP
+    nodePort: 31010
+    targetPort: 31010
+    port: 31010
+    name: grpc
+  - protocol: TCP
+    port: 8443
+    targetPort: 8443
+    name: operations
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-orderer1
+  labels:
+    run: blockchain-orderer
+spec:
+  type: ClusterIP
+  selector:
+    name: orderer
+  ports:
+  - protocol: TCP
+    targetPort: 30005
+    port: 30005
+    name: cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-orderer2
+  labels:
+    run: blockchain-orderer2
+spec:
+  type: NodePort
+  selector:
+    name: orderer2
+  ports:
+  - protocol: TCP
+    nodePort: 31020
+    targetPort: 31020
+    port: 31020
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-orderer2
+  labels:
+    run: blockchain-orderer2
+spec:
+  type: ClusterIP
+  selector:
+    name: orderer2
+  ports:
+  - protocol: TCP
+    targetPort: 30006
+    port: 30006
+    name: cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-orderer3
+  labels:
+    run: blockchain-orderer3
+spec:
+  type: NodePort
+  selector:
+    name: orderer3
+  ports:
+  - protocol: TCP
+    nodePort: 31030
+    targetPort: 31030
+    port: 31030
+    name: grpc
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-orderer3
+  labels:
+    run: blockchain-orderer3
+spec:
+  type: ClusterIP
+  selector:
+    name: orderer3
+  ports:
+  - protocol: TCP
+    targetPort: 30007
+    port: 30007
+    name: cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-orderer4
+  labels:
+    run: blockchain-orderer4
+spec:
+  type: NodePort
+  selector:
+    name: orderer4
+  ports:
+  - protocol: TCP
+    nodePort: 31040
+    targetPort: 31040
+    port: 31040
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-orderer4
+  labels:
+    run: blockchain-orderer4
+spec:
+  type: ClusterIP
+  selector:
+    name: orderer4
+  ports:
+  - protocol: TCP
+    targetPort: 30008
+    port: 30008
+    name: cluster
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-orderer5
+  labels:
+    run: blockchain-orderer5
+spec:
+  type: NodePort
+  selector:
+    name: orderer5
+  ports:
+  - protocol: TCP
+    nodePort: 31050
+    targetPort: 31050
+    port: 31050
+    name: grpc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-orderer5
+  labels:
+    run: blockchain-orderer5
+spec:
+  type: ClusterIP
+  selector:
+    name: orderer5
+  ports:
+  - protocol: TCP
+    targetPort: 30009
+    port: 30009
+    name: cluster
+  
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-org1peer1
+  labels:
+    run: blockchain-org1peer1
+spec:
+  type: NodePort
+  selector:
+    name: org1peer1
+  ports:
+  - protocol: TCP
+    nodePort: 30110
+    targetPort: 30110
+    port: 30110
+    name: grpc
+  - protocol: TCP
+    nodePort: 30111
+    targetPort: 30111
+    port: 30111
+    name: events
+  
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-org2peer1
+  labels:
+    run: blockchain-org2peer1
+spec:
+  type: NodePort
+  selector:
+    name: org2peer1
+  ports:
+  - protocol: TCP
+    nodePort: 30210
+    targetPort: 30210
+    port: 30210
+    name: grpc
+  - protocol: TCP
+    nodePort: 30211
+    targetPort: 30211
+    port: 30211
+    name: events
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-org1peer1-prometheus
+spec:
+  selector:
+    name: org1peer1
+  ports:
+  - protocol: TCP
+    port: 5443
+    targetPort: 5443
+    name: metrics
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-org2peer1-prometheus
+spec:
+  selector:
+    name: org2peer1
+  ports:
+  - protocol: TCP
+    port: 6443
+    targetPort: 6443
+    name: metrics
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-orderer-prometheus
+spec:
+  selector:
+    name: orderer
+  ports:
+  - protocol: TCP
+    port: 8443
+    targetPort: 8443
+    name: metrics
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-org1peer2
+  labels:
+    run: blockchain-org1peer2
+spec:
+  type: NodePort
+  selector:
+    name: org1peer2
+  ports:
+  - protocol: TCP
+    nodePort: 30310
+    targetPort: 30310
+    port: 30310
+    name: grpc
+  - protocol: TCP
+    nodePort: 30311
+    targetPort: 30311
+    port: 30311
+    name: events
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blockchain-org2peer2
+  labels:
+    run: blockchain-org2peer2
+spec:
+  type: NodePort
+  selector:
+    name: org2peer2
+  ports:
+  - protocol: TCP
+    nodePort: 30410
+    targetPort: 30410
+    port: 30410
+    name: grpc
+  - protocol: TCP
+    nodePort: 30411
+    targetPort: 30411
+    port: 30411
+    name: events

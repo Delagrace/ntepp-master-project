@@ -1,0 +1,30 @@
+#org2peer1
+2 transaction(s) took an average of 26.90 ms.
+3 transaction(s) took an average of 26.24 ms.  
+1 transaction(s) took an average of 13.19 ms.  
+4 transaction(s) took an average of 45.66 ms.  
+5 transaction(s) took an average of 36.81 ms.  
+28 transaction(s) took an average of 507.50 ms.
+50 transaction(s) took an average of 474.60 ms.
+11 transaction(s) took an average of 375.00 ms.
+30 transaction(s) took an average of 323.00 ms.
+43 transaction(s) took an average of 214.00 ms.
+49 transaction(s) took an average of 349.00 ms.
+38 transaction(s) took an average of 285.00 ms.
+31 transaction(s) took an average of 342.00 ms.
+17 transaction(s) took an average of 118.00 ms.
+#org2peer1
+2 transaction(s) took an average of 26.90 ms.
+3 transaction(s) took an average of 26.24 ms.
+1 transaction(s) took an average of 13.19 ms.
+4 transaction(s) took an average of 45.66 ms.
+5 transaction(s) took an average of 36.81 ms.
+28 transaction(s) took an average of 507.50 ms.
+50 transaction(s) took an average of 474.60 ms.
+11 transaction(s) took an average of 375.00 ms.
+30 transaction(s) took an average of 323.00 ms.
+43 transaction(s) took an average of 214.00 ms.
+49 transaction(s) took an average of 349.00 ms.
+38 transaction(s) took an average of 285.00 ms.
+31 transaction(s) took an average of 342.00 ms.
+17 transaction(s) took an average of 118.00 ms.

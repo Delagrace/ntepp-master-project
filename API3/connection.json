@@ -1,0 +1,139 @@
+{
+    "name": "basic-network",
+    "version": "1.0.0",
+    "client": {
+        "organization": "Org1",
+        "connection": {
+            "timeout": {
+                "peer": {
+                    "endorser": "300"
+                },
+                "orderer": "300"
+            }
+        }
+    },
+    "channels": {
+        "channel0": {
+            "orderers": [
+                "blockchain-orderer:31010",
+                "blockchain-orderer2:31020",
+                "blockchain-orderer3:31030",
+                "blockchain-orderer4:31040",
+                "blockchain-orderer5:31050"
+                
+            ],
+            "peers": {
+                "peer0.org1.example.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "ledgerQuery": true,
+                    "eventSource": true
+                },
+                "peer0.org2.example.com": {
+                    "endorsingPeer": true,
+                    "chaincodeQuery": true,
+                    "ledgerQuery": true,
+                    "eventSource": true
+                }
+            }
+        }
+    },
+    "organizations": {
+        "Org1": {
+            "mspid": "Org1MSP",
+            "peers": [
+                "peer0.org1.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca-org1"
+            ]
+        },
+        "Org2": {
+            "mspid": "Org2MSP",
+            "peers": [
+                "peer0.org2.example.com"
+            ],
+            "certificateAuthorities": [
+                "ca-org1"
+            ]
+        }
+    },
+    "orderers": {
+        "blockchain-orderer:31010": {
+            "url": "grpcs://blockchain-orderer:31010",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICRDCCAeqgAwIBAgIRAIsIM7Q8e5nGdYGQgMcGguQwCgYIKoZIzj0EAwIwbDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l\neGFtcGxlLmNvbTAeFw0yNDA3MDMwMDUzMDBaFw0zNDA3MDEwMDUzMDBaMGwxCzAJ\nBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh\nbmNpc2NvMRQwEgYDVQQKEwtleGFtcGxlLmNvbTEaMBgGA1UEAxMRdGxzY2EuZXhh\nbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ8+xSRdm0YicXczq0D\nHCRsrHwC7ruVCW6XmisgVt4+PCc/T9S3BQaxMlmDcPO4rXhYS9ihmW4WjgTxIcfP\nv9+uo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsG\nAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIHRRod1Ko9oiL+whQ/nZ\nuIaf9JJZHcgtXE0YwYpcZ/dXMAoGCCqGSM49BAMCA0gAMEUCIQDRVrLkfw3kdr+E\nE1kikkjtWFMBtVoRQF09tkoo8ZJTdgIgeQR2kKfaz3hK4mJ75WlOqpUOjmZfzhU4\n2I3qhSZfl08=\n-----END CERTIFICATE-----"
+            }
+            },
+        "blockchain-orderer2:31020": {
+            "url": "grpcs://blockchain-orderer2:31020",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICRDCCAeqgAwIBAgIRAIsIM7Q8e5nGdYGQgMcGguQwCgYIKoZIzj0EAwIwbDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l\neGFtcGxlLmNvbTAeFw0yNDA3MDMwMDUzMDBaFw0zNDA3MDEwMDUzMDBaMGwxCzAJ\nBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh\nbmNpc2NvMRQwEgYDVQQKEwtleGFtcGxlLmNvbTEaMBgGA1UEAxMRdGxzY2EuZXhh\nbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ8+xSRdm0YicXczq0D\nHCRsrHwC7ruVCW6XmisgVt4+PCc/T9S3BQaxMlmDcPO4rXhYS9ihmW4WjgTxIcfP\nv9+uo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsG\nAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIHRRod1Ko9oiL+whQ/nZ\nuIaf9JJZHcgtXE0YwYpcZ/dXMAoGCCqGSM49BAMCA0gAMEUCIQDRVrLkfw3kdr+E\nE1kikkjtWFMBtVoRQF09tkoo8ZJTdgIgeQR2kKfaz3hK4mJ75WlOqpUOjmZfzhU4\n2I3qhSZfl08=\n-----END CERTIFICATE-----"
+            },  
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "ledgerQuery": true
+            },
+        "blockchain-orderer3:31030": {
+            "url": "grpcs://blockchain-orderer3:31030",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICRDCCAeqgAwIBAgIRAIsIM7Q8e5nGdYGQgMcGguQwCgYIKoZIzj0EAwIwbDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l\neGFtcGxlLmNvbTAeFw0yNDA3MDMwMDUzMDBaFw0zNDA3MDEwMDUzMDBaMGwxCzAJ\nBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh\nbmNpc2NvMRQwEgYDVQQKEwtleGFtcGxlLmNvbTEaMBgGA1UEAxMRdGxzY2EuZXhh\nbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ8+xSRdm0YicXczq0D\nHCRsrHwC7ruVCW6XmisgVt4+PCc/T9S3BQaxMlmDcPO4rXhYS9ihmW4WjgTxIcfP\nv9+uo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsG\nAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIHRRod1Ko9oiL+whQ/nZ\nuIaf9JJZHcgtXE0YwYpcZ/dXMAoGCCqGSM49BAMCA0gAMEUCIQDRVrLkfw3kdr+E\nE1kikkjtWFMBtVoRQF09tkoo8ZJTdgIgeQR2kKfaz3hK4mJ75WlOqpUOjmZfzhU4\n2I3qhSZfl08=\n-----END CERTIFICATE-----"
+            },  
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "ledgerQuery": true
+            },
+        "blockchain-orderer4:31040": {
+            "url": "grpcs://blockchain-orderer4:31040",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICRDCCAeqgAwIBAgIRAIsIM7Q8e5nGdYGQgMcGguQwCgYIKoZIzj0EAwIwbDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l\neGFtcGxlLmNvbTAeFw0yNDA3MDMwMDUzMDBaFw0zNDA3MDEwMDUzMDBaMGwxCzAJ\nBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh\nbmNpc2NvMRQwEgYDVQQKEwtleGFtcGxlLmNvbTEaMBgGA1UEAxMRdGxzY2EuZXhh\nbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ8+xSRdm0YicXczq0D\nHCRsrHwC7ruVCW6XmisgVt4+PCc/T9S3BQaxMlmDcPO4rXhYS9ihmW4WjgTxIcfP\nv9+uo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsG\nAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIHRRod1Ko9oiL+whQ/nZ\nuIaf9JJZHcgtXE0YwYpcZ/dXMAoGCCqGSM49BAMCA0gAMEUCIQDRVrLkfw3kdr+E\nE1kikkjtWFMBtVoRQF09tkoo8ZJTdgIgeQR2kKfaz3hK4mJ75WlOqpUOjmZfzhU4\n2I3qhSZfl08=\n-----END CERTIFICATE-----"
+            },  
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "ledgerQuery": true
+            },
+        "blockchain-orderer5:31050": {
+            "url": "grpcs://blockchain-orderer5:31050",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICRDCCAeqgAwIBAgIRAIsIM7Q8e5nGdYGQgMcGguQwCgYIKoZIzj0EAwIwbDEL\nMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG\ncmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l\neGFtcGxlLmNvbTAeFw0yNDA3MDMwMDUzMDBaFw0zNDA3MDEwMDUzMDBaMGwxCzAJ\nBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh\nbmNpc2NvMRQwEgYDVQQKEwtleGFtcGxlLmNvbTEaMBgGA1UEAxMRdGxzY2EuZXhh\nbXBsZS5jb20wWTATBgcqhkjOPQIBBggqhkjOPQMBBwNCAAQ8+xSRdm0YicXczq0D\nHCRsrHwC7ruVCW6XmisgVt4+PCc/T9S3BQaxMlmDcPO4rXhYS9ihmW4WjgTxIcfP\nv9+uo20wazAOBgNVHQ8BAf8EBAMCAaYwHQYDVR0lBBYwFAYIKwYBBQUHAwIGCCsG\nAQUFBwMBMA8GA1UdEwEB/wQFMAMBAf8wKQYDVR0OBCIEIHRRod1Ko9oiL+whQ/nZ\nuIaf9JJZHcgtXE0YwYpcZ/dXMAoGCCqGSM49BAMCA0gAMEUCIQDRVrLkfw3kdr+E\nE1kikkjtWFMBtVoRQF09tkoo8ZJTdgIgeQR2kKfaz3hK4mJ75WlOqpUOjmZfzhU4\n2I3qhSZfl08=\n-----END CERTIFICATE-----"
+            },  
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "ledgerQuery": true
+            }
+    },
+    "peers": {
+        "peer0.org1.example.com": {
+            "url": "grpcs://blockchain-org1peer1:30110",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICVjCCAf2gAwIBAgIQYb8arxHS0BOpoQbbhm3b8zAKBggqhkjOPQQDAjB2MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQb3JnMS5leGFtcGxlLmNvbTEfMB0GA1UEAxMWdGxz\nY2Eub3JnMS5leGFtcGxlLmNvbTAeFw0yNDA3MDMwMDUzMDBaFw0zNDA3MDEwMDUz\nMDBaMHYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH\nEw1TYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBvcmcxLmV4YW1wbGUuY29tMR8wHQYD\nVQQDExZ0bHNjYS5vcmcxLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAEdIfJFGa1TIgDAao0DyXsxqioAKw1+UbvTLrSJUNytmoMddnqu+cgTpUD\nd0tn8eiWrctv3RDCxTs7Rfr/CEtgsqNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1Ud\nJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1Ud\nDgQiBCDDP/IfgKpBAUrxXMBN7Qprrtot/TTjC6/i+fTWevlpvTAKBggqhkjOPQQD\nAgNHADBEAiBIl+oaeNR+h2yyYinDXjWdAd1lCgB4tV3RusgZdbMhIAIgPKCzePcS\nGF1bz8fYnCqtN4plxh0YYgNrOfeYWt59wVw=\n-----END CERTIFICATE-----"  
+            },
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "ledgerQuery": true,
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org1.example.com",
+                "hostnameOverride": "peer0.org1.example.com"
+            }
+        },
+        "peer0.org2.example.com": {
+            "url": "grpcs://blockchain-org2peer1:30210",
+            "tlsCACerts": {
+                "pem": "-----BEGIN CERTIFICATE-----\nMIICVjCCAf2gAwIBAgIQbm1DncCgJ2Dy2MPe7wkeJzAKBggqhkjOPQQDAjB2MQsw\nCQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy\nYW5jaXNjbzEZMBcGA1UEChMQb3JnMi5leGFtcGxlLmNvbTEfMB0GA1UEAxMWdGxz\nY2Eub3JnMi5leGFtcGxlLmNvbTAeFw0yNDA3MDMwMDUzMDBaFw0zNDA3MDEwMDUz\nMDBaMHYxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQH\nEw1TYW4gRnJhbmNpc2NvMRkwFwYDVQQKExBvcmcyLmV4YW1wbGUuY29tMR8wHQYD\nVQQDExZ0bHNjYS5vcmcyLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0CAQYIKoZIzj0D\nAQcDQgAE0H62POAIwiGqXp8tjswLzRFkP2OwztAwsD9Q7U8wNK6QD/aODGdQblyC\nvKYygPernruFOW6AypxjZ1pRy7QnRaNtMGswDgYDVR0PAQH/BAQDAgGmMB0GA1Ud\nJQQWMBQGCCsGAQUFBwMCBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MCkGA1Ud\nDgQiBCBcu2KvXMmC387aURM0gxChYhwMM7tjYfw7I/YZwaP/0zAKBggqhkjOPQQD\nAgNHADBEAiBy3zy6naRZagMf3/I/xHK5XGupch2zquJTP4zeA77X8QIgQ9qHMR/V\nQHiWMU1DDLuKWiUCpq7iF9DcVwXdxxOarA8=\n-----END CERTIFICATE-----"  
+            },
+            "endorsingPeer": true,
+            "chaincodeQuery": true,
+            "ledgerQuery": true,
+            "grpcOptions": {
+                "ssl-target-name-override": "peer0.org2.example.com",
+                "hostnameOverride": "peer0.org2.example.com"
+            }
+         }
+    },
+    "certificateAuthorities": {
+        "ca-org1": {
+            "url": "http://blockchain-ca:7054",
+            "caName": "ca-org1"
+        }
+    }
+}

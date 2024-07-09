@@ -1,0 +1,45 @@
+        - name: ORDERER_GENERAL_CLUSTER_LISTENPORT #ListenPort:
+          value: "30009"
+        - name: ORDERER_GENERAL_CLUSTER_LISTENADDRESS #ListenAddress:
+          value: 0.0.0.0
+        - name: ORDERER_GENERAL_CLUSTER_SERVERCERTIFICATE  #ServerCertificate:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.crt
+        - name: ORDERER_GENERAL_CLUSTER_SERVERPRIVATEKEY #Server Private Key:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer5.example.com/tls/server.key
+        
+        - name: ORDERER_GENERAL_CLUSTER_LISTENPORT #ListenPort:
+          value: "30008"
+        - name: ORDERER_GENERAL_CLUSTER_LISTENADDRESS #ListenAddress:
+          value: 0.0.0.0
+        - name: ORDERER_GENERAL_CLUSTER_SERVERCERTIFICATE  #ServerCertificate:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.crt
+        - name: ORDERER_GENERAL_CLUSTER_SERVERPRIVATEKEY #ServerPrivateKey:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer4.example.com/tls/server.key
+        
+        - name: ORDERER_GENERAL_CLUSTER_LISTENPORT #ListenPort:
+          value: "30007"
+        - name: ORDERER_GENERAL_CLUSTER_LISTENADDRESS #ListenAddress:
+          value: 0.0.0.0
+        - name: ORDERER_GENERAL_CLUSTER_SERVERCERTIFICATE  #ServerCertificate:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.crt
+        - name: ORDERER_GENERAL_CLUSTER_SERVERPRIVATEKEY #ServerPrivateKey:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer3.example.com/tls/server.key
+        
+        - name: ORDERER_GENERAL_CLUSTER_LISTENPORT #ListenPort:
+          value: "30006"
+        - name: ORDERER_GENERAL_CLUSTER_LISTENADDRESS #ListenAddress:
+          value: 0.0.0.0
+        - name: ORDERER_GENERAL_CLUSTER_SERVERCERTIFICATE  #ServerCertificate:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.crt
+        - name: ORDERER_GENERAL_CLUSTER_SERVERPRIVATEKEY #ServerPrivateKey:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer2.example.com/tls/server.key
+        
+        - name: ORDERER_GENERAL_CLUSTER_LISTENPORT #ListenPort:
+          value: "30005"
+        - name: ORDERER_GENERAL_CLUSTER_LISTENADDRESS #ListenAddress:
+          value: 0.0.0.0
+        - name: ORDERER_GENERAL_CLUSTER_SERVERCERTIFICATE  #ServerCertificate:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.crt
+        - name: ORDERER_GENERAL_CLUSTER_SERVERPRIVATEKEY #ServerPrivateKey:
+          value: /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/server.key
+        

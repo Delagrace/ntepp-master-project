@@ -1,0 +1,143 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: joinchannel
+spec:
+  backoffLimit: 1
+  template:
+    metadata:
+      name: joinchannel
+    spec:
+      restartPolicy: "Never"
+      volumes:
+      - name: sharedvolume
+        persistentVolumeClaim:
+          claimName: shared-pvc
+      containers:
+      - name: joinchannel1
+        image: delagrace/my-fabric-peer:1.4
+        imagePullPolicy: Always
+        command: ["sh", "-c", "peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem && peer channel join -b ${CHANNEL_NAME}_newest.block "]
+        env:
+        - name: CHANNEL_NAME
+          value: channel0
+        - name: CORE_PEER_NETWORKID
+          value: nid2
+        - name: ORDERER_URL
+          value: blockchain-orderer:31010
+        - name: CORE_PEER_ADDRESS
+          value: blockchain-org1peer1:30110
+        - name: CORE_PEER_LOCALMSPID
+          value: Org1MSP
+        - name: CORE_PEER_MSPID
+          value: Org1MSP
+        - name: FABRIC_LOGGING_SPECL
+          value: debug
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+        - name: CORE_PEER_TLS_ROOTCERT_FILE
+          value: /shared/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+
+      - name: joinchannel3
+        image: delagrace/my-fabric-peer:1.4
+        imagePullPolicy: Always
+        command: ["sh", "-c", "peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem && peer channel join -b ${CHANNEL_NAME}_newest.block "]
+        env:
+        - name: CHANNEL_NAME
+          value: channel0
+        - name: CORE_PEER_NETWORKID
+          value: nid2
+        - name: ORDERER_URL
+          value: blockchain-orderer:31010
+        - name: CORE_PEER_ADDRESS
+          value: blockchain-org1peer2:30310
+        - name: CORE_PEER_LOCALMSPID
+          value: Org1MSP
+        - name: CORE_PEER_MSPID
+          value: Org1MSP
+        - name: FABRIC_LOGGING_SPECL
+          value: debug
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+        - name: CORE_PEER_TLS_ROOTCERT_FILE
+          value: /shared/crypto-config/peerOrganizations/org1.example.com/peers/peer1.org1.example.com/tls/ca.crt
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+
+      - name: joinchannel2
+        image: hyperledger/fabric-peer:1.4
+        imagePullPolicy: Always
+        command: ["sh", "-c", "peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem && peer channel join -b ${CHANNEL_NAME}_newest.block "]
+        env:
+        - name: CHANNEL_NAME
+          value: channel0
+        - name: CORE_PEER_NETWORKID
+          value: nid2
+        - name: ORDERER_URL
+          value: blockchain-orderer:31010
+        - name: CORE_PEER_ADDRESS
+          value: blockchain-org2peer1:30210
+        - name: CORE_PEER_LOCALMSPID
+          value: Org2MSP
+        - name: CORE_PEER_MSPID
+          value: Org2MSP
+        - name: FABRIC_LOGGING_SPEC
+          value: debug
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+        - name: CORE_PEER_TLS_ROOTCERT_FILE
+          value: /shared/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+
+      - name: joinchannel4
+        image: hyperledger/fabric-peer:1.4
+        imagePullPolicy: Always
+        command: ["sh", "-c", "peer channel fetch newest -o ${ORDERER_URL} -c ${CHANNEL_NAME} --tls --cafile /shared/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem && peer channel join -b ${CHANNEL_NAME}_newest.block "]
+        env:
+        - name: CHANNEL_NAME
+          value: channel0
+        - name: CORE_PEER_NETWORKID
+          value: nid2
+        - name: ORDERER_URL
+          value: blockchain-orderer:31010
+        - name: CORE_PEER_ADDRESS
+          value: blockchain-org2peer2:30410
+        - name: CORE_PEER_LOCALMSPID
+          value: Org2MSP
+        - name: CORE_PEER_MSPID
+          value: Org2MSP
+        - name: FABRIC_LOGGING_SPEC
+          value: debug
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /shared/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+        - name: CORE_PEER_TLS_ROOTCERT_FILE
+          value: /shared/crypto-config/peerOrganizations/org2.example.com/peers/peer1.org2.example.com/tls/ca.crt
+        - name: FABRIC_CFG_PATH
+          value: /etc/hyperledger/fabric
+        - name: GODEBUG
+          value: "netdns=go"
+        volumeMounts:
+        - mountPath: /shared
+          name: sharedvolume
+
+
+

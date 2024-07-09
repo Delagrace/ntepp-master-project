@@ -1,0 +1,47 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rest-api1
+  labels:
+    run: rest-api1
+spec:
+  type: NodePort
+  selector:
+    name: rest-api1
+  ports:
+  - protocol: TCP
+    port: 4000
+    targetPort: 4000
+    name: grpc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rest-api1
+  #annotations:
+     # prometheus.io/scrape: 'true'
+     # prometheus.io/port:   '9090'
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: rest-api1
+  template:
+    metadata:
+      labels:
+        name: rest-api1
+    spec:
+      volumes:
+      - name: sharedvolume
+        persistentVolumeClaim:
+          claimName: shared-pvc 
+
+      containers:
+      - name: rest-api1
+        image: delagrace/rest-api6
+        volumeMounts:
+        - mountPath: shared
+          name: sharedvolume
+        ports:
+        - containerPort: 4000
